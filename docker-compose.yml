@@ -1,0 +1,31 @@
+version: "3"
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URI=${MONGO_URL}
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frondend
+    container_name: frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
