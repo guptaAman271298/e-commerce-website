@@ -44,7 +44,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /var/www/mern-app
+            cd /var/www/e-commerce-website
             git pull origin master
             docker compose down
             docker compose pull
