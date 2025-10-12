@@ -5,6 +5,12 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+
+# Accept build argument
+ARG VITE_PRODUCT_API
+# Set it as environment variable for the build
+ENV VITE_PRODUCT_API=$VITE_PRODUCT_API
+
 RUN npm run build
 
 # Serve using NGINX
