@@ -29,7 +29,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/ecomm-frontend:latest
         env:
-          REACT_APP_PRODUCT_API: ${{ secrets.REACT_APP_PRODUCT_API }}
+          VITE_PRODUCT_API: ${{ secrets.VITE_PRODUCT_API }}
 
       - name: 🏗️ Build and push backend images
         uses: docker/build-push-action@v5
