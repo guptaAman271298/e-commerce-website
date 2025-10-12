@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - MONGO_URI=${MONGO_URL}
+      - MONGO_URL=${MONGO_URL}
     depends_on:
       - mongo
 
