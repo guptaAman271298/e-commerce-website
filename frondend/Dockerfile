@@ -9,7 +9,7 @@ COPY . .
 # Accept build argument
 # ARG VITE_PRODUCT_API
 # Set it as environment variable for the build
-ENV VITE_PRODUCT_API="http://${SSH_HOST}/api/"
+ENV VITE_PRODUCT_API=${secrets.VITE_PRODUCT_API}
 
 RUN npm run build
 
