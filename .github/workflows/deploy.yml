@@ -28,8 +28,8 @@ jobs:
           file: ./frondend/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/ecomm-frontend:latest
-          build-args: |
-            VITE_PRODUCT_API=${{ secrets.VITE_PRODUCT_API }}
+        env:
+          VITE_PRODUCT_API: ${{ secrets.VITE_PRODUCT_API }}
 
       - name: 🏗️ Build and push backend images
         uses: docker/build-push-action@v5

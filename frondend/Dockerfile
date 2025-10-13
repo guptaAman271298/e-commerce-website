@@ -7,7 +7,7 @@ RUN npm install
 COPY . .
 
 # Accept build argument
-ARG VITE_PRODUCT_API
+# ARG VITE_PRODUCT_API
 # Set it as environment variable for the build
 ENV VITE_PRODUCT_API=$VITE_PRODUCT_API
 
