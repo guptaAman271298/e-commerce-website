@@ -11,7 +11,11 @@ services:
       - mongo
 
   frontend:
-    build: ./frondend
+    build: 
+      context: ./frondend
+      dockerfile: Dockerfile
+      args:
+        VITE_PRODUCT_API: ${VITE_PRODUCT_API}  # or hardcode the URL
     container_name: frontend
     ports:
       - "5173:80"
