@@ -7,18 +7,23 @@ services:
       - "8000:8000"
     environment:
       - MONGO_URL=${MONGO_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - CLOUD_API_KEY=${CLOUD_API_KEY}
+      - CLOUD_API_SECRET=${CLOUD_API_SECRET}
+      - CLOUD_NAME=${CLOUD_NAME}
+      - PAYPAL_CLIENT_ID=${PAYPAL_CLIENT_ID}
+      - SAMPLE_IMAGE_URL=${SAMPLE_IMAGE_URL}
+      - SAMPLE_PUBLIC_ID=${SAMPLE_PUBLIC_ID}
     depends_on:
       - mongo
 
   frontend:
-    build: 
-      context: ./frondend
-      dockerfile: Dockerfile
-      args:
-        VITE_PRODUCT_API: ${VITE_PRODUCT_API}  # or hardcode the URL
+    build: ./frondend
     container_name: frontend
     ports:
       - "5173:80"
+    environment:
+      - VITE_PRODUCT_API=${VITE_PRODUCT_API}
     depends_on:
       - backend
 
