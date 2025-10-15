@@ -5,25 +5,21 @@ services:
     container_name: backend
     ports:
       - "8000:8000"
-    environment:
-      - MONGO_URL=${MONGO_URL}
-      - JWT_SECRET=${JWT_SECRET}
-      - CLOUD_API_KEY=${CLOUD_API_KEY}
-      - CLOUD_API_SECRET=${CLOUD_API_SECRET}
-      - CLOUD_NAME=${CLOUD_NAME}
-      - PAYPAL_CLIENT_ID=${PAYPAL_CLIENT_ID}
-      - SAMPLE_IMAGE_URL=${SAMPLE_IMAGE_URL}
-      - SAMPLE_PUBLIC_ID=${SAMPLE_PUBLIC_ID}
+    env_file:
+      - .env
     depends_on:
       - mongo
 
   frontend:
-    build: ./frondend
+    build: 
+      context: ./frondend
+      args:
+        VITE_PRODUCT_API: ${VITE_PRODUCT_API}
     container_name: frontend
     ports:
       - "5173:80"
-    environment:
-      - VITE_PRODUCT_API=${VITE_PRODUCT_API}
+    env_file:
+      - .env
     depends_on:
       - backend
 
